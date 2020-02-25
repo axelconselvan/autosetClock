@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <div>
+        <label for="ssid">SSID</label>      
+        <input value="" id="ssid" placeholder="SSID" style="margin-left: 56px;">
+      </div>
+      <div>
+        <label for="password">PASSWORD</label>
+        <input type="password" value="" id="password" placeholder="PASSWORD">
+      </div>
+      <div>
+        <button class="primary" id="savebtn" type="button" onclick="myFunction()">SAVE</button>
+      </div>
+    </fieldset>
+  </form>
+</body>
+<script>
+function myFunction()
+{
+  console.log("button was clicked!");
+  var ssid = document.getElementById("ssid").value;
+  var password = document.getElementById("password").value;
+  var data = {ssid:ssid, password:password};
+  var xhr = new XMLHttpRequest();
+  var url = "/settings";
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // Typical action to be performed when the document is ready:
+      if(xhr.responseText != null){
+        console.log(xhr.responseText);
+      }
+    }
+  };
+  xhr.open("POST", url, true);
+  xhr.send(JSON.stringify(data));
+};
+</script>
+</html>
