@@ -3356,7 +3356,7 @@ void loop() {
   
   if (passed15min && (WiFi.status() == WL_CONNECTED) && !useManualTimeDate) {
 
-     if(Ping.ping(remote_host_wta)) {  // Verifica se há conexão com a internet e verifica se a api de offset está online
+     if(Ping.ping(remote_host_google)) {  // Verifica se há conexão com a internet e verifica se a api de offset está online
        nextState = getOffsetState;
      } else {
        nextState = getRTCState;
